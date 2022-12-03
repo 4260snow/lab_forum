@@ -30,27 +30,34 @@
 				</tr>
 			</tabel>
 		</form>
-		
 		<?php
-			if(!(isset($ !!! ["index"]))){
-				
+			if(!(isset($_GET["page"]))){
+				header("Location: http://lab.local/index.php?page=" . "0");
 			}
 		?>
 		
 		<!--Первые 10 постов-->
 		<table width="600">
 			<h1 align="center">Last notes</h1>
-			<?php include_once 'includes/output.php'; ?>
-		</table> 
+			<?php include_once "includes/output.php"; ?>
+		</table>
 		
 		<!--Переход между страницами-->
-		<p align='center' ><a href="http://lab.local/includes/page_idx.php?prev=1"> prev  </a>
-		<a href="http://lab.local/includes/page_idx.php?next=1">  next </a></p>
+		<?php include "includes/page_idx.php" ?>
+		<form method="post">
+			<table>
+				<tr>
+				<td><input type="submit" name="prev"
+				class="button" value="prev" /></td>
+				<td></td>
+				<td><input type="submit" name="next"
+				class="button" value="next" /></td>
+				</tr>
+			</table>
+		</form>
+		
 	</body>
 </html>
-
-
-
 
 
 

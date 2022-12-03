@@ -1,17 +1,19 @@
 <?php
 	function prevPage(){
-		if ($index > 0){
-			//header('Location: http://lab.local/index.php');
+		if ($_GET["page"] > 0){
+			$newPage = $_GET["page"] - 1;
+			header('Location: http://lab.local/index.php?page=' . $newPage);
 		}
 	}
 
 	function nextPage(){
-		//header('Location: http://lab.local/index.php');
+		$newPage = $_GET["page"] + 1;
+		header('Location: http://lab.local/index.php?page=' . $newPage);
 	}
 	
-	if(isset($_GET["prev"])){
+	if(array_key_exists('prev', $_POST)){
 		prevPage();
-	}else if (isset($_GET["next"])){
+	}else if (array_key_exists('next', $_POST)){
 		nextPage();
 	}
 ?>
