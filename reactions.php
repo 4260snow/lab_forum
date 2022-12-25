@@ -7,6 +7,10 @@
 	{
 		$id = $_POST["id"];
 		$sql = "UPDATE posts SET dislikes=".($_POST["amount"] + 1)." WHERE id=".$id;
+	} else if ($_POST["reaction"] == 'indifference')
+	{
+		$id = $_POST["id"];
+		$sql = "UPDATE posts SET indifference=".($_POST["amount"] + 1)." WHERE id=".$id;
 	}
 	
 	$con = mysqli_connect("localhost", "root", "", "posts");
