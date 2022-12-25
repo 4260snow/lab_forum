@@ -100,3 +100,108 @@
 * Переход по страницам
 
 ![Рис.11 Переход по страницам](https://github.com/4260snow/lab_forum/blob/main/images/page_bs.svg)
+
+## Значимые фрагменты кода
+* Цикл отображения записей
+```sh
+<?php 
+    $N = 10; $page_num = $_GET["page"];
+
+    if ($notes_amnt % 10 && $page_num == round($notes_amnt / $N))
+        $N = $notes_amnt % 10;
+
+    for ($id = $N * $page_num; $id < $N * ($page_num + 1); $id++)
+    {
+        include ("includes/note.php");
+        if ($id + 1 == $notes_amnt)
+        {
+            break;
+        }
+    }
+?>
+```
+
+* Получение сиска записей из бд
+```sh
+<?php
+
+	$con = mysqli_connect("localhost", "root", "", "posts");
+	if (!$con)
+	{
+		die("Connection failed: ".mysqli_connect_error());
+	}
+	
+	mysqli_set_charset($con, "utf8");
+
+	$sql = "SELECT * FROM posts ORDER BY time DESC";
+	
+	
+	$info = mysqli_query($con, $sql);
+	$notes_amnt = mysqli_num_rows($info);
+	$note_list = mysqli_fetch_all($info, MYSQLI_ASSOC);
+	
+	mysqli_close($con);
+?>
+```
+
+* Добавление новой записи в бд
+```sh
+    $con = mysqli_connect("localhost", "root", "", "posts");			
+    $allowed_types = array("image/jpeg", "image/jpg");
+    if ($_FILES["image"]["error"] == 0)
+    {
+        $name = $_POST["id"] . '.jpg';
+        copy($_FILES["image"]["tmp_name"], "images/".$name);
+
+        $sql = "INSERT INTO `$table` (`text`, `picture`) VALUES ('$text', '1')";
+        mysqli_query($con, $sql);
+    }
+    else
+    {
+        $sql = "INSERT INTO `$table` (`text`) VALUES ('$text')";
+        mysqli_query($con, $sql);
+    }
+    header("Location: http://lab.local/index.php");
+```
+
+* Показать/скрыть комментарии
+```sh
+<script> 
+	function show(id){
+		let comm = document.getElementById("comm"+id);
+		if (comm.getAttribute("hidden")){
+			comm.removeAttribute("hidden");
+		}else{
+			comm.setAttribute("hidden", true);
+		}
+	}
+</script>
+...
+#code
+...
+<button id=<?php echo $id ?> onclick="show(<?php echo $id ?>)">Show comments</button>
+```
+
+* Переход между страницами
+```sh
+<?php
+	function prevPage(){
+		if ($_POST["page"] > 0){
+			$newPage = $_POST["page"] - 1;
+			header('Location: http://lab.local/index.php?page=' . $newPage);
+		}
+	}
+
+	function nextPage(){
+		#SQL проверка
+		$newPage = $_POST["page"] + 1;
+		header('Location: http://lab.local/index.php?page=' . $newPage);
+	}
+	
+	if($_POST["btn"] == "prev"){
+		prevPage();
+	}else if ($_POST["btn"] == "next"){
+		nextPage();
+	}
+?>
+```
