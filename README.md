@@ -17,7 +17,7 @@
 * Комментирование второго уровня
 ## Ход работы
 ### Пользовательский интерфейс
-![Рис. 1 - Интерфейс](https://github.com/4260snow/lab_forum/blob/main/images/interface.png)
+![Рис. 1 - Интерфейс](https://github.com/4260snow/lab_forum/blob/main/images/ui.png)
 ### Сценарии работы
 * Добавление новой записи  
 
