@@ -13,17 +13,29 @@
 			$text = $_POST['note'];
 			
 			if (!(isset($_POST['note'])) || strlen($text) == 0){
-				print("Note must not be empty");
+				print("Note must not be empty"); # редирект с месседж
 				die();			
 			}
 			
 			try {
-				$conn = new PDO("mysql:host=localhost;dbname=$database", $user);
-				$sql = "INSERT INTO `$table` (`text`) VALUES ('$text')";
-				echo "В таблицу Users добавлено строк: " . $conn->exec($sql);
+				$con = mysqli_connect("localhost", "root", "", "posts");			
+				$allowed_types = array("image/jpeg", "image/jpg");
+				if ($_FILES["image"]["error"] == 0)
+				{
+					$name = $_POST["id"] . '.jpg';
+					copy($_FILES["image"]["tmp_name"], "images/".$name);
+					
+					$sql = "INSERT INTO `$table` (`text`, `picture`) VALUES ('$text', '1')";
+					mysqli_query($con, $sql);
+				}
+				else
+				{
+					$sql = "INSERT INTO `$table` (`text`) VALUES ('$text')";
+					mysqli_query($con, $sql);
+				}
 				header("Location: http://lab.local/index.php");
 			} catch (PDOException $e) {
-				print "Error!: " . $e->getMessage() . "<br/>";
+				print_r("Error!: " . $e->getMessage() . "<br/>");
 				die();
 			}
 		?>

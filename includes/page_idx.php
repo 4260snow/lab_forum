@@ -1,19 +1,20 @@
 <?php
 	function prevPage(){
-		if ($_GET["page"] > 0){
-			$newPage = $_GET["page"] - 1;
+		if ($_POST["page"] > 0){
+			$newPage = $_POST["page"] - 1;
 			header('Location: http://lab.local/index.php?page=' . $newPage);
 		}
 	}
 
 	function nextPage(){
-		$newPage = $_GET["page"] + 1;
+		#SQL проверка
+		$newPage = $_POST["page"] + 1;
 		header('Location: http://lab.local/index.php?page=' . $newPage);
 	}
 	
-	if(array_key_exists('prev', $_POST)){
+	if($_POST["btn"] == "prev"){
 		prevPage();
-	}else if (array_key_exists('next', $_POST)){
+	}else if ($_POST["btn"] == "next"){
 		nextPage();
 	}
 ?>
