@@ -79,3 +79,24 @@
     "comment_id": 27,
 }
 ```
+
+## Алгоритмы
+* Отображение записей
+
+![Рис.7 Отображение записей](https://github.com/4260snow/lab_forum/blob/main/images/view.svg)
+
+* Добавление записи
+
+![Рис.8 Добавление записи](https://github.com/4260snow/lab_forum/blob/main/images/add_note_bs.svg)
+
+* Добавление комментариев
+
+![Рис.9 Добавление комментариев](https://github.com/4260snow/lab_forum/blob/main/images/comment_bs.svg)
+
+* Реакции на записи
+
+![Рис.10 Реакции на записи](https://github.com/4260snow/lab_forum/blob/main/images/reactions_bs.svg)
+
+* Переход по страницам
+
+![Рис.11 Переход по страницам](https://github.com/4260snow/lab_forum/blob/main/images/page_bs.svg)
