@@ -13,7 +13,7 @@
 			$text = $_POST['note'];
 			
 			if (!(isset($_POST['note'])) || strlen($text) == 0){
-				print("Note must not be empty");
+				header("Location: http://lab.local/index.php");
 				die();			
 			}
 			
