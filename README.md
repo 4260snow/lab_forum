@@ -44,7 +44,7 @@
 
 * Переход по страницам
 
-![Рис.6 - client-server переход по страницам](https://github.com/4260snow/lab_forum/blob/main/pages.svg)
+![Рис.6 - client-server переход по страницам](https://github.com/4260snow/lab_forum/blob/main/images/pagenation.svg)
 
 
 ## Структура базы данных MySQL
