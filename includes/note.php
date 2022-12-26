@@ -38,6 +38,17 @@
 				<button style="background-color: #F2F2F2" type="submit">&#128078; <?php echo $note_list[$id]["dislikes"]?></button>
 			</form>
 		</td>
+			
+		<td align=center>
+			<form action="reactions.php" method="POST">
+				<input type="hidden" name="id" value=<?php echo $note_list[$id]["id"] ?>>
+				<input type="hidden" name="reaction" value="indifference">
+				<input type="hidden" name="amount" value=<?php echo $note_list[$id]["indifference"] ?>>
+				<input type="hidden" name="page" value=<?php echo $_GET["page"] ?>>
+				<button style="background-color: #F2F2F2" type="submit">😑 <?php echo $note_list[$id]["indifference"]?></button>
+			</form>
+		</td>	
+		
 		</tr>
 
 		<tr>
