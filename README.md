@@ -53,11 +53,11 @@
 
 ```sh
 {
-    "id": 21,
-    "text": "fire",
-    "likes": 4,
-    "dislikes": 1,
-    "indifference": 0,
+    "id" (int A_I): 21,
+    "text" (tinytext): "fire",
+    "likes" (int): 4,
+    "dislikes" (int): 1,
+    "indifference" (int): 0,
     "time": 2022-12-23 19:53:40,
     "picture": 1
 }
@@ -66,9 +66,9 @@
 * Таблица комментариев: id комментария, текст комментария, id записи, к которой относится этот комментарий
 ```sh
 {
-    "id": 3,
-    "text": "text3",
-    "note_id": 27,
+    "id" (int A_I): 3,
+    "text" (tinytext): "text3",
+    "note_id" (int unsigned): 27,
 }
 ```
 * Таблица ответов: id ответа, текст ответа, id комментария, к которой относится этот ответ
